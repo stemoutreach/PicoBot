@@ -7,6 +7,6 @@
 
 ## Steps
 
-### 1. [Assemble](Assemble/README.md) 
+### 1. [Assemble](1-Assemble/README.md) 
 Unboxing and assembling the PicoBobot
 
