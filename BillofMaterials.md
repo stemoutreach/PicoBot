@@ -21,7 +21,7 @@
 - [M3 x 6mm Screws[)https://www.amazon.com/dp/B012TE12CY)
 
 
-<img src="https://github.com/stemoutreach/BasicRobot/blob/main/zzimages/BOM3.jpg" width="600" >
+<img src="https://github.com/stemoutreach/PicoBot/blob/main/zzimages/BOM3.jpg" width="600" >
 
 
 
