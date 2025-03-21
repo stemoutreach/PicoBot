@@ -10,3 +10,8 @@
 ### 1. [Assemble](1-Assemble/README.md) 
 Unboxing and assembling the PicoBobot
 
+### 2. [Wire](2-Wire/README.md) 
+Wire PicoBot
+
+### 3. [Code](3-Code/README.md) 
+
