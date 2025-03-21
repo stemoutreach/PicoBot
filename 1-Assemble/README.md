@@ -36,10 +36,4 @@
 
 <img src="https://github.com/stemoutreach/PicoBot/blob/main/zzimages/PicoBot16.jpg" width="600" > 
 
-<img src="https://github.com/stemoutreach/PicoBot/blob/main/zzimages/PicoBot21.jpg" width="600" > 
 
-<img src="https://github.com/stemoutreach/PicoBot/blob/main/zzimages/PicoBot22.jpg" width="600" > 
-
-<img src="https://github.com/stemoutreach/PicoBot/blob/main/zzimages/PicoBot23.jpg" width="600" > 
-
-<img src="https://github.com/stemoutreach/PicoBot/blob/main/zzimages/PicoBot24.jpg" width="600" > 
