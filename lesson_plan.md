@@ -1,4 +1,4 @@
-# 🌟 PicoBot Lesson Plan
+# 🌟 PicoBot Lesson Plan 
 
 **Audience:** 7th & 8th Grade  
 **Purpose:** Spark interest in robotics, build confidence, and introduce hands-on coding and electronics using the Raspberry Pi Pico (via PicoBot).  
