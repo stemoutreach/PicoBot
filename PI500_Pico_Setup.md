@@ -35,7 +35,7 @@ A concise, repeatable set of steps for preparing each **Raspberry Pi 500** wor
 4. **Install Git & picotool** *(optional)*
 
    ```bash
-   sudo apt install git gh picotool -y
+   sudo apt install git gh pico-utils -y  # "pico-utils" package contains picotool
    ```
 
 5. **Launch Thonny & set interpreter**\
