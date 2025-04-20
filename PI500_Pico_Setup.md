@@ -52,7 +52,7 @@ A concise, repeatable set of steps for preparing each **Raspberry Pi 500** wor
    Connect the Pico’s micro‑USB to a USB‑A port on the Pi 500 (no buttons pressed).
 
 2. **Download the latest MicroPython UF2** *(only required once; keep the file in Downloads)*  <br>
-   1. On the Pi 500 open a browser and visit **<https://rpf.io/pico‑uf2>** – the official shortcut to the Pico firmware page.  <br>
+   1. On the Pi 500 open a browser and open **<https://www.raspberrypi.com/documentation/microcontrollers/micropython.html>** (or the short link **rpf.io/picow‑uf2**). This page lists both *Raspberry Pi Pico* and *Raspberry Pi Pico W* firmware builds.  <br>
    2. Scroll to the *MicroPython* section and click the newest file named like `pico‑<date>‑micropython.uf2`.  <br>
    3. Verify the file appears in **~/Downloads**.
 
