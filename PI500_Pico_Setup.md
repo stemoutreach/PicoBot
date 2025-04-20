@@ -32,9 +32,25 @@ A concise, repeatable set of steps for preparing each **Raspberry Pi 500** wor
    sudo apt update && sudo apt full-upgrade -y
    ```
 
-4. **Install Git & picotool** *(optional)*
-
+4. **Install Git & Pico utilities (includes `picotool`)**  
    ```bash
+   sudo apt update
+   sudo apt install git gh pico-utils -y   # installs picotool, elf2uf2, etc.
+   ```  
+   <details><summary><em>Package not found?</em></summary>
+   
+   Enable the official Raspberry Pi repository, then retry:
+   
+   ```bash
+   echo "deb http://archive.raspberrypi.org/debian $(lsb_release -sc) main" | \
+        sudo tee /etc/apt/sources.list.d/raspi.list
+   sudo apt update
+   sudo apt install pico-utils -y
+   ```
+   
+   If you still prefer building from source, see **Appendix A – Building `picotool` from source** at the end of this file.
+   </details>
+```bash
    sudo apt install git gh pico-utils -y  # "pico-utils" package contains picotool
    ```
 
@@ -67,11 +83,11 @@ A concise, repeatable set of steps for preparing each **Raspberry Pi 500** wor
 5. **Quick sanity test**  <br>
    ```python
    import machine, time
-   led = machine.Pin(25, machine.Pin.OUT)
-   for _ in range(5):
-       led.toggle()
-       time.sleep(0.3)
-   ```
+   led = machine.Pin("LED", machine.Pin.OUT)  # built‑in LED (GPIO 25 on Pico, GPIO 0 on Pico W/WH)
+for _ in range(5):
+    led.toggle()
+    time.sleep(0.3)
+```
    The on‑board LED should blink.
 
 6. **Save a script to run at boot**  <br>
@@ -99,4 +115,33 @@ A concise, repeatable set of steps for preparing each **Raspberry Pi 500** wor
 5. Code → save `main.py` → `git add . && git commit -m "Lab‑1"`.
 
 Enjoy your PicoBot build!
+
+---
+
+## Appendix A – Building `picotool` from source
+
+Only necessary if `pico-utils` is unavailable on your image.
+
+```bash
+# Prerequisites
+sudo apt install git cmake gcc-arm-none-eabi build-essential libusb-1.0-0-dev -y
+
+# Clone source and the Pico SDK (as a submodule)
+git clone --recursive https://github.com/raspberrypi/picotool
+cd picotool
+
+# Build
+mkdir build && cd build
+export PICO_SDK_PATH=$PWD/../pico-sdk   # CMake needs the SDK location
+cmake ..
+make -j$(nproc)
+
+# Install globally
+sudo make install
+```
+
+If you see **“Directory .../pico-sdk not found”**, ensure you cloned with `--recursive` or run:
+```bash
+git submodule update --init
+```
 
