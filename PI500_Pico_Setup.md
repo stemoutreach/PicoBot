@@ -46,22 +46,25 @@ A concise, repeatable set of steps for preparing each **Raspberry Pi 500** wor
 
 \## B · Prepare the Pico WH
 
-> If the UF2 is already flashed you can skip Step 2.
+> If the UF2 is already flashed you can skip Steps 2–3.
 
-1. **Plug in**\
-   Connect the Pico’s micro‑USB to a USB‑A port on the Pi 500.
+1. **Plug in**  <br>
+   Connect the Pico’s micro‑USB to a USB‑A port on the Pi 500 (no buttons pressed).
 
-2. **Flash MicroPython UF2** *(only if needed)*
+2. **Download the latest MicroPython UF2** *(only required once; keep the file in Downloads)*  <br>
+   1. On the Pi 500 open a browser and visit **<https://rpf.io/pico‑uf2>** – the official shortcut to the Pico firmware page.  <br>
+   2. Scroll to the *MicroPython* section and click the newest file named like `pico‑<date>‑micropython.uf2`.  <br>
+   3. Verify the file appears in **~/Downloads**.
 
-   1. Hold **BOOTSEL** on the Pico.
-   2. While holding the button, plug in the USB cable. A new drive **RPI‑RP2** appears.
-   3. Drag‑and‑drop the latest `pico_micropython_*.uf2` onto the drive. The Pico reboots automatically.
+3. **Flash MicroPython UF2** *(skip if already flashed)*  <br>
+   1. Unplug the Pico.  <br>
+   2. Hold **BOOTSEL**, then plug the Pico back in; a drive named **RPI‑RP2** mounts.  <br>
+   3. Drag‑and‑drop the UF2 from `~/Downloads` onto the drive. The Pico reboots automatically when the copy finishes.
 
-3. **Open the REPL in Thonny**\
-   Click the green ▶️ Run button (or press **Ctrl‑D**) and look for `>>>` prompt.
+4. **Open the REPL in Thonny**  <br>
+   Click the green ▶️ Run button (or press **Ctrl‑D**) and look for the `>>>` prompt.
 
-4. **Quick sanity test**
-
+5. **Quick sanity test**  <br>
    ```python
    import machine, time
    led = machine.Pin(25, machine.Pin.OUT)
@@ -69,18 +72,15 @@ A concise, repeatable set of steps for preparing each **Raspberry Pi 500** wor
        led.toggle()
        time.sleep(0.3)
    ```
-
    The on‑board LED should blink.
 
-5. **Save a script to run at boot**\
+6. **Save a script to run at boot**  <br>
    *File ▸ Save As ▸ Raspberry Pi Pico* → name it `main.py`. Anything named `main.py` auto‑runs on power‑up.
 
-6. **Eject cleanly**\
+7. **Eject cleanly**  <br>
    In Thonny choose *Run ▸ Stop/Restart backend* before unplugging USB.
 
----
-
-\## Troubleshooting Quick Ref
+## Troubleshooting Quick Ref Quick Ref
 
 | Symptom                               | Likely Cause & Fix                                                                                                                       |                          |
 | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ |
