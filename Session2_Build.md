@@ -1,15 +1,15 @@
 # Session 2 – Chassis Assembly & Motor Polarity Demo
 
-**Goal:** Bolt the caster wheel and two TT gear motors onto the chassis, then _manually_ power one motor to observe how wire polarity controls direction. Students should leave asking: “How could we do reversal in code?” (Answer comes with the motor controller in Session 3.)
+**Goal:** Attach caster wheel and TT motors, then briefly power a motor from a Pico GPIO pin to observe one‑direction motion. Students swap the motor wires to see reversal and realise why a dedicated motor controller is essential.
 
 ---
 
 ## Learning Objectives
 
-* Mechanical assembly of caster and motors.
-* Observe DC motor behaviour with direct battery power.
-* Understand that reversing voltage polarity reverses rotation.
-* Preview the need for a motor controller (no wiring yet).
+* Complete mechanical assembly of caster + motors.
+* Safely power a TT motor *momentarily* from the Pico’s 3 V GPIO to observe rotation.
+* Discover that swapping the motor leads flips direction.
+* Understand limitations of powering motors directly from the Pico.
 
 ---
 
@@ -21,57 +21,74 @@
 | Caster bearing wheel + screws | 1 set |
 | TT DC 3–6 V gear motor | 2 |
 | Motor mounting brackets & hardware | 2 sets |
-| 2 × AA battery holder (3 V) or bench power supply with clip leads | 1 |
+| Male–female jumper wires | 2 |
+| Pi 500 + Pico on breadboard | 1 |
 | Multimeter (shared) | – |
-| Screwdriver | 1 |
 
-> **Why no motor controller today?** We want students to physically swap the wires and _see_ polarity ≙ direction before abstracting it to code. The controller (H‑bridge) arrives in Session 3.
-
----
-
-## 1 · Mechanical Assembly (30 min)
-
-1. **Caster first** – Mount on the single‑hole end of the chassis using M3 screws & nuts.
-2. **Motor brackets** – Align each TT motor so its shaft faces forward through the big side cut‑outs. Secure with two screws each.
-3. _Do not_ wire anything yet—just leave the red/black motor leads hanging out the top for testing.
-
-*(Hold up an example build so students match orientation.)*
+> **Safety note:** A Pico GPIO can source ~15 mA—just enough to spin an unloaded TT motor for a second or two. We’ll run *short bursts only* (< 1 s) to avoid brown‑outs. Real operation will use a motor controller in Session 3.
 
 ---
 
-## 2 · Motor Polarity Experiment (20 min)
+## 1 · Mechanical Assembly (25 min)
 
-1. Clip or hold the **battery pack leads** to one motor’s red/black wires (red→red, black→black). The wheel turns **forward**.
-2. Swap the battery leads (red→black, black→red). The wheel now spins **reverse**.
-3. Ask students: **“How could we swap polarity _electronically_ instead of physically?”** – collect ideas; introduce the term **H‑bridge** but save details for Session 3.
-
-Optional: use a **multimeter in DC amps mode** to show that the motor draws far more current than a Pico GPIO pin can supply.
+1. **Caster first** – Secure on the single‑hole end of the chassis.  
+2. **Motor brackets** – Align shafts forward; attach motors with two screws each.  
+3. Route motor leads to the breadboard area.
 
 ---
 
-## 3 · Optional Stretch – PWM Concept with LED (10 min)
+## 2 · Wire One Motor for Momentary Test (10 min)
 
-Even though we’re not yet driving motors from code, we can demo PWM speed control idea using the Pico’s LED:
+| Motor lead | Pico pin |
+|------------|----------|
+| **Red** | **GPIO 15** (physical 20) |
+| **Black** | **GND** (physical 38) |
+
+Use jumper wires from the motor leads straight to the Pico header pins.
+
+---
+
+## 3 · Momentary Spin Code (10 min)
 
 ```python
 import machine, time
-led = machine.PWM(machine.Pin("LED"))
-led.freq(1000)
-for duty in (1000, 10000, 30000, 50000):
-    led.duty_u16(duty)
-    time.sleep(1)
-led.deinit()
+MOTOR = machine.Pin(15, machine.Pin.OUT)
+
+for _ in range(3):
+    MOTOR.high()   # apply 3.3 V – motor spins
+    time.sleep(0.5)
+    MOTOR.low()    # stop; let voltage recover
+    time.sleep(0.5)
 ```
 
-Students see brightness scale and link that to motor speed.
+Observe forward rotation. Keep bursts short—if the Pico resets, you’ve over‑loaded it.
 
 ---
 
-## 4 · Wrap‑Up & Teaser for Session 3 (5 min)
+## 4 · Reverse by Swapping Leads (10 min)
+
+Unplug the Pico. Swap the red/black leads on the breadboard, rerun the script—the wheel now spins the opposite direction.
+
+### Guided Discussion
+
+* *“Why can’t we just leave the motor wired to a GPIO and use `.high()` / `.low()` forever?”*  
+  → Current limits, brown‑out resets, inability to power two motors.  
+* *“How could software reverse without swapping wires?”*  
+  → Need an H‑bridge (motor controller) and separate 5 V battery rail.
+
+---
+
+## 5 · (Stretch) PWM Concept with LED (if time, 5 min)
+
+Demonstrate varying duty cycle on the Pico LED to foreshadow speed control.
+
+---
+
+## 6 · Wrap‑Up & Teaser for Session 3 (5 min)
 
 * Caster & both motors mounted ✔️  
-* Forward vs. reverse demonstrated by swapping wires ✔️  
-* Students articulate need for electronic polarity switch ✔️  
+* One motor observed forward & reverse via wire swap ✔️  
+* Understood GPIO current limits ✔️  
 
-**Next session:** add the motor controller (H‑bridge), wire batteries properly, and write Python to drive both motors in code.
+**Next session:** introduce the motor controller (H‑bridge), wire battery power, and write code to drive both motors safely.
 
