@@ -1,15 +1,14 @@
 # Session 1 – Getting Started with the PicoBot
 
-**Goal:** Every student plugs in their Raspberry Pi Pico WH, sees the onboard LED blink, and mounts the Pico correctly on the breadboard.
+**Goal:** Mount the Pico correctly on the breadboard, configure Thonny, and run a first LED‑blink script.
 
 ---
 
 ## Learning Objectives
 
-* Flash & verify MicroPython on a Pico WH.
-* Configure Thonny to talk to MicroPython.
-* Run a first script that blinks the onboard LED.
-* Place the Pico on the breadboard in a repeatable orientation.
+* Orient and seat the Pico WH on a breadboard without bending pins.
+* Configure Thonny to use the MicroPython interpreter on the Pico.
+* Run a script that blinks the onboard LED.
 
 ---
 
@@ -18,24 +17,35 @@
 | Item | Qty (per student) |
 |------|------------------|
 | Raspberry Pi Pico WH | 1 |
-| Breadboard (half‑size) | 1 |
+| Half‑size breadboard | 1 |
 | USB‑A ↔ micro‑USB data cable | 1 |
 | Pi 500 workstation | 1 |
 
 ---
 
-## 1 · Connect & Configure Thonny
+## 1 · Place the Pico on the Breadboard
 
-1. **Plug the Pico in** (no BOOTSEL button).  
-2. Open **Thonny** → *Tools ▸ Options ▸ Interpreter*.  
-3. Set **Interpreter** = **MicroPython (Raspberry Pi Pico)**, **Port** = *Automatic* (or `/dev/ttyACM0`).  
-4. Click **OK**. In the Shell you should see `>>>`.
+1. Orient the breadboard so the **blue minus (-) rail** is at the bottom.  
+2. Hold the Pico with the **USB port facing right** and the antenna on top.  
+3. Align the two rows of header pins over the **center groove**.  
+4. Press gently until all pins seat flush—pin 1 should be in column E, pin 2 in column F.  
 
-> **Troubleshoot:** If you see the desktop prompt (`>>>` missing), check that the status bar says *MicroPython*. If not, re‑select the interpreter.
+![breadboard orientation placeholder](docs/img/pico_breadboard_placement.png)
+
+> *Tip:* Keep the Pico flush with the top edge of the board—this leaves space for driver wiring below.
 
 ---
 
-## 2 · Blink the On‑Board LED
+## 2 · Connect & Configure Thonny
+
+1. Plug the Pico into the Pi 500 using the USB cable (no BOOTSEL needed).  
+2. Open **Thonny** → *Tools ▸ Options ▸ Interpreter*.  
+3. Select **Interpreter** = **MicroPython (Raspberry Pi Pico)**, **Port** = *Automatic* (or `/dev/ttyACM0`).  
+4. Click **OK**. The Shell should show the `>>>` MicroPython prompt.
+
+---
+
+## 3 · Blink the On‑Board LED
 
 ```python
 import machine, time
@@ -44,45 +54,31 @@ import machine, time
 led = machine.Pin("LED", machine.Pin.OUT)
 
 for _ in range(5):
-    led.toggle()   # toggle ON/OFF
+    led.toggle()
     time.sleep(0.3)
 ```
 
-*Press ▶️ Run*. The small **green LED near the antenna** should flash five times.
+Press ▶️ Run. The small **green LED near the antenna** blinks five times.
 
 ---
 
-## 3 · Place the Pico on the Breadboard
-
-1. Orient the breadboard so the **blue minus (-) rail** is at the bottom.  
-2. Insert the Pico **over the central groove** so **USB end points right**, antenna up.  
-3. Ensure **row 1** of Pico pins goes into **column E** and **row 2** into **column F** (so each pin straddles the groove).  
-4. Gently press until all headers are fully seated.
-
-![breadboard orientation placeholder](docs/img/pico_breadboard_placement.png)
-
-> *Tip:* Keep the Pico flush with the top edge of the breadboard—this leaves room for motor‑driver wiring at the bottom.
-
----
-
-## 4 · What’s Next?
+## What’s Next?
 
 In **Session 2 – Build**, you’ll:
 
-* Bolt the caster wheel and TT motors onto the purple chassis.
+* Mount the caster wheel and TT motors on the purple chassis.
 * Learn why a motor controller (H‑bridge) is required.
-* Spin a motor ON/OFF and brainstorm reversing direction.
+* Spin a motor ON/OFF in code.
 
-Save your LED script as `blink_led.py` on the Pico if you’d like to keep it as a reference.
+Save your LED script as `blink_led.py` on the Pico if you’d like to keep it for reference.
 
 ---
 
 ### Check‑Out
 
-* LED blink observed ✔️  
+* Pico seated correctly ✔️  
 * Thonny interpreter set ✔️  
-* Pico seated on breadboard ✔️  
-* `blink_led.py` saved ✔️  
+* LED blink observed ✔️  
 
-See you next session!
+See you in Session 2!
 
