@@ -30,7 +30,7 @@
 3. Align the two rows of header pins over the **center groove**.  
 4. Press gently until all pins seat flush—pin 1 should be in column E, pin 2 in column F.  
 
-![breadboard orientation placeholder](docs/img/pico_breadboard_placement.png)
+<img src="https://github.com/stemoutreach/PicoBot/blob/main/zzimages/PicoBreadboard.jpg" width="400" > 
 
 > *Tip:* Keep the Pico flush with the top edge of the board—this leaves space for driver wiring below.
 
