@@ -1,14 +1,15 @@
-# Session 3 – Finish Build & Python Basics
+# Session 2 – Chassis Assembly & Motor Polarity Demo
 
-**Goal:** Complete electrical wiring (battery + motor controller), verify two‑motor drive, and reinforce core Python constructs.
+**Goal:** Bolt the caster wheel and two TT gear motors onto the chassis, then _manually_ power one motor to observe how wire polarity controls direction. Students should leave asking: “How could we do reversal in code?” (Answer comes with the motor controller in Session 3.)
 
 ---
 
 ## Learning Objectives
 
-* Safely power the robot with batteries.
-* Drive both motors forward, reverse, and stop.
-* Review Python: variables, loops, conditionals, functions.
+* Mechanical assembly of caster and motors.
+* Observe DC motor behaviour with direct battery power.
+* Understand that reversing voltage polarity reverses rotation.
+* Preview the need for a motor controller (no wiring yet).
 
 ---
 
@@ -16,76 +17,61 @@
 
 | Item | Qty |
 |------|-----|
-| Assembled chassis with motors | 1 |
-| Motor controller board (L9110/L298N) | 1 |
-| 2× 18650 Li‑Ion battery pack (or 4× AA) | 1 |
-| Barrel‑jack or JST‑PH pigtail | 1 |
+| Purple aluminium chassis | 1 |
+| Caster bearing wheel + screws | 1 set |
+| TT DC 3–6 V gear motor | 2 |
+| Motor mounting brackets & hardware | 2 sets |
+| 2 × AA battery holder (3 V) or bench power supply with clip leads | 1 |
 | Multimeter (shared) | – |
-| Pi 500 + Pico on breadboard | 1 |
+| Screwdriver | 1 |
+
+> **Why no motor controller today?** We want students to physically swap the wires and _see_ polarity ≙ direction before abstracting it to code. The controller (H‑bridge) arrives in Session 3.
 
 ---
 
-## 1 · Wire Battery to Motor Controller (15 min)
+## 1 · Mechanical Assembly (30 min)
 
-1. **Polarity check** – Use multimeter; red = + V, black = GND.  
-2. Connect battery **+** to `VCC` (or `VIN`) and battery **–** to `GND` on the driver.  
-3. Do *not* tie battery + to Pico 5 V; the driver’s `5V OUT` pin powers logic if needed.
+1. **Caster first** – Mount on the single‑hole end of the chassis using M3 screws & nuts.
+2. **Motor brackets** – Align each TT motor so its shaft faces forward through the big side cut‑outs. Secure with two screws each.
+3. _Do not_ wire anything yet—just leave the red/black motor leads hanging out the top for testing.
 
-> **Safety tip:** Add an inline power switch or pull the battery when not testing.
+*(Hold up an example build so students match orientation.)*
 
 ---
 
-## 2 · Dual‑Motor Drive Test (15 min)
+## 2 · Motor Polarity Experiment (20 min)
 
-Extend the code from Session 2:
+1. Clip or hold the **battery pack leads** to one motor’s red/black wires (red→red, black→black). The wheel turns **forward**.
+2. Swap the battery leads (red→black, black→red). The wheel now spins **reverse**.
+3. Ask students: **“How could we swap polarity _electronically_ instead of physically?”** – collect ideas; introduce the term **H‑bridge** but save details for Session 3.
+
+Optional: use a **multimeter in DC amps mode** to show that the motor draws far more current than a Pico GPIO pin can supply.
+
+---
+
+## 3 · Optional Stretch – PWM Concept with LED (10 min)
+
+Even though we’re not yet driving motors from code, we can demo PWM speed control idea using the Pico’s LED:
 
 ```python
 import machine, time
-IN1, IN2, IN3, IN4 = (machine.Pin(p, machine.Pin.OUT) for p in (2, 3, 6, 7))
-
-def drive(left_fwd, left_rev, right_fwd, right_rev, t=1):
-    IN1.value(left_fwd)
-    IN2.value(left_rev)
-    IN3.value(right_fwd)
-    IN4.value(right_rev)
-    time.sleep(t)
-    IN1.low(); IN2.low(); IN3.low(); IN4.low()
-
-# Forward 1 s
-drive(1,0, 1,0, 1)
-# Reverse 1 s
-drive(0,1, 0,1, 1)
+led = machine.PWM(machine.Pin("LED"))
+led.freq(1000)
+for duty in (1000, 10000, 30000, 50000):
+    led.duty_u16(duty)
+    time.sleep(1)
+led.deinit()
 ```
 
-Robot should roll forward, pause, then reverse.
+Students see brightness scale and link that to motor speed.
 
 ---
 
-## 3 · Python Basics Refresher (20 min)
+## 4 · Wrap‑Up & Teaser for Session 3 (5 min)
 
-| Concept | Mini Exercise |
-|---------|--------------|
-| **Variables** | Store `speed = 50000` and reuse in PWM duty cycle. |
-| **Loops** | `for _ in range(4):` drive square pattern. |
-| **Conditionals** | `if left_speed > right_speed:` print turn direction. |
-| **Functions** | Wrap motion blocks: `def forward(t, duty): ...` |
+* Caster & both motors mounted ✔️  
+* Forward vs. reverse demonstrated by swapping wires ✔️  
+* Students articulate need for electronic polarity switch ✔️  
 
-**Group challenge:** Write a function `figure_eight()` that calls `forward`, `pivot_left`, and `pivot_right` to trace a figure 8 on the floor.
-
----
-
-## 4 · Checklist & Next Steps (10 min)
-
-* Battery safely attached ✔️  
-* Both motors respond to code ✔️  
-* Python constructs practised ✔️  
-
-### Stretch Goals
-
-* Add PWM speed control to `forward()` and `reverse()`.
-* Mount ultrasonic sensor and write `avoid_obstacle()`.
-
----
-
-Great job—your PicoBot is now mobile **and** you’ve brushed up on essential Python skills. Feel free to keep experimenting and share your figure‑8 videos in the class repo!
+**Next session:** add the motor controller (H‑bridge), wire batteries properly, and write Python to drive both motors in code.
 
