@@ -32,7 +32,7 @@
 5. Make sure the component rails start with 1 at the top.
 6. Press gently until all pins seat flush— Pico pin 1 should be in row 1 column c, pico pin 40 should be in column h.  
 
-    <img src="https://github.com/stemoutreach/PicoBot/blob/main/zzimages/PicoBreadboard.jpg" width="400" > 
+    <img src="https://github.com/stemoutreach/PicoBot/blob/main/zzimages/PicoBreadboard.jpg" width="400" >     <img src="https://github.com/stemoutreach/PicoBot/blob/main/zzimages/Insidebread.jpg" width="400" > 
 
 > *Tip:* Keep the Pico flush with the top edge of the board—this leaves space for driver wiring below.
 
