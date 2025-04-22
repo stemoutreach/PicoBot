@@ -25,10 +25,12 @@
 
 ## 1 · Place the Pico on the Breadboard
 
-1. Orient the breadboard so the **blue minus (-) rail** is at the bottom.  
-2. Hold the Pico with the **USB port facing right** and the antenna on top.  
-3. Align the two rows of header pins over the **center groove**.  
-4. Press gently until all pins seat flush—pin 1 should be in column E, pin 2 in column F.  
+1. Orient the breadboard like the image below.  
+2. Hold the Pico with the **USB port facing the top**.
+3. The ower rails should be + - on both sides.
+4. Align the two rows of header pins over the **center groove**.  
+5. Make sure the component rails start with 1 at the top.
+6. Press gently until all pins seat flush—pin 1 should be in column E, pin 2 in column F.  
 
     <img src="https://github.com/stemoutreach/PicoBot/blob/main/zzimages/PicoBreadboard.jpg" width="400" > 
 
