@@ -30,7 +30,7 @@
 3. The ower rails should be + - on both sides.
 4. Align the two rows of header pins over the **center groove**.  
 5. Make sure the component rails start with 1 at the top.
-6. Press gently until all pins seat flush—pin 1 should be in column E, pin 2 in column F.  
+6. Press gently until all pins seat flush— Pico pin 1 should be in row 1 column c, pico pin 40 should be in column h.  
 
     <img src="https://github.com/stemoutreach/PicoBot/blob/main/zzimages/PicoBreadboard.jpg" width="400" > 
 
