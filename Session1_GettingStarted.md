@@ -22,19 +22,25 @@
 | Pi 500 workstation | 1 |
 
 ---
+Inside the breadboard
+
+<img src="https://github.com/stemoutreach/PicoBot/blob/main/zzimages/Insidebread.jpg" width="500" > 
+
 
 ## 1 · Place the Pico on the Breadboard
 
+
 1. Orient the breadboard like the image below.  
 2. Hold the Pico with the **USB port facing the top**.
-3. The ower rails should be + - on both sides.
+3. The power rails should be + - on both sides.
 4. Align the two rows of header pins over the **center groove**.  
 5. Make sure the component rails start with 1 at the top.
-6. Press gently until all pins seat flush— Pico pin 1 should be in row 1 column c, pico pin 40 should be in column h.  
+6. Press gently until all pins seat flush— Pico pin 1 should be in row 1 column c, pico pin 40 should be in row 1 column h.  
 
-    <img src="https://github.com/stemoutreach/PicoBot/blob/main/zzimages/PicoBreadboard.jpg" width="350" >     <img src="https://github.com/stemoutreach/PicoBot/blob/main/zzimages/Insidebread.jpg" width="500" > 
-
+    <img src="https://github.com/stemoutreach/PicoBot/blob/main/zzimages/PicoPlacement.jpg" width="500" >   
+    
 > *Tip:* Keep the Pico flush with the top edge of the board—this leaves space for driver wiring below.
+
 
 ---
 
