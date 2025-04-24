@@ -88,6 +88,9 @@ sleep(1)
 led.off()
 
 ```
+Try additional LED function 
+https://picozero.readthedocs.io/en/latest/recipes.html#leds
+
 ---
 
 ## What’s Next?
