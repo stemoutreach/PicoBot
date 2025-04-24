@@ -74,7 +74,7 @@ Press ▶️ Run. The small **green LED near the antenna** blinks five times.
 2. Load the below
 3. Press ▶️ Run.
    
-<img src="https://github.com/stemoutreach/PicoBot/blob/main/zzimages/LEDOnOff" width="500" >   
+<img src="https://github.com/stemoutreach/PicoBot/blob/main/zzimages/LEDOnOff.jpg" width="500" >   
 
 
 ```python
