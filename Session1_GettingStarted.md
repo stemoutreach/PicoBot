@@ -56,18 +56,38 @@ Inside the breadboard
 ## 3 · Blink the On‑Board LED
 
 ```python
-import machine, time
+from picozero import pico_led
+from time import sleep
 
-# Built‑in LED alias works on Pico and Pico W/WH
-led = machine.Pin("LED", machine.Pin.OUT)
-
-for _ in range(5):
-    led.toggle()
-    time.sleep(0.3)
+while True:
+    pico_led.on()
+    sleep(0.5)
+    pico_led.off()
+    sleep(0.5)
 ```
 
 Press ▶️ Run. The small **green LED near the antenna** blinks five times.
 
+## 4 · Blink an LED
+
+1. Plug in the LED to the breadboard - ling lead to GPIO 14, short lead to ground (GPIO 13)
+2. Load the below
+3. Press ▶️ Run.
+   
+<img src="https://github.com/stemoutreach/PicoBot/blob/main/zzimages/LEDOnOff" width="500" >   
+
+
+```python
+from picozero import LED
+from time import sleep
+
+led = LED(14)
+
+led.on()
+sleep(1)
+led.off()
+
+```
 ---
 
 ## What’s Next?
