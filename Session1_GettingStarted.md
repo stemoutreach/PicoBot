@@ -70,7 +70,7 @@ Press ▶️ Run. The small **green LED near the antenna** blinks five times.
 
 ## 4 · Blink an LED
 
-1. Plug in the LED to the breadboard - ling lead to GPIO 14, short lead to ground (GPIO 13)
+1. Plug in the LED to the breadboard - long lead to GPIO 14, short lead to ground (GPIO 13)
 2. Load the below
 3. Press ▶️ Run.
    
