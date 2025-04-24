@@ -29,30 +29,11 @@
 
 ---
 
-## 1 · Bench‑Top Motor Polarity Demo (15 min)
+## 1 Motor Polarity Demo (15 min)
 
-### Wire One Motor Temporarily
-
-| Motor lead | Pico pin |
-|------------|----------|
-| **Red** | **GPIO 15** (physical 20) |
-| **Black** | **GND** (physical 38) |
-
-### Code to Spin Forward
-
-```python
-import machine, time
-MOTOR = machine.Pin(15, machine.Pin.OUT)
-for _ in range(3):
-    MOTOR.high()   # 3.3 V forward
-    time.sleep(0.5)
-    MOTOR.low()    # coast/stop
-    time.sleep(0.5)
-```
+### Demo Powering One Motor 
 
 ### Reverse by Swapping Leads
-
-Unplug USB, swap red/black jumpers at the Pico header, re‑run script. Motor spins opposite direction.
 
 **Discuss:** Why can’t we keep driving motors directly from GPIO? → current limits, only one direction, no speed control.
 
