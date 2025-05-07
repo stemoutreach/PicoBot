@@ -27,7 +27,7 @@ led = Pin(28, Pin.OUT)         # GP28 controls the LED
 buzzer = Pin(10, Pin.OUT)      # GP10 controls the buzzer
 
 # Set up input device (button)
-button = Pin(14, Pin.IN, Pin.PULL_DOWN)  # GP14 reads button state
+button = Pin(14, Pin.IN, Pin.PULL_UP)  # GP14 reads button state
 
 # Function to turn on alert
 def alert_on():
@@ -45,7 +45,7 @@ def alert_off():
 print("Press the button to turn on the LED and buzzer!")
 
 while True:
-    if button.value() == 1:    # Button is pressed
+    if button.value() == 0:    # Button is pressed
         alert_on()
         time.sleep(0.5)        # Keep alert on briefly
         alert_off()
