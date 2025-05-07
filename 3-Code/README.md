@@ -7,11 +7,7 @@
 | # | Topic | Description |
 |---|-------|-------------|
 | 1 | [Programming Motors with L298N](L298N_Motor_Worksheet.md) |Learn how to control two DC motors using Python and a Raspberry Pi Pico with the L298N motor driver. |
-| 2 | [LED and Speaker](LEDAndSpeaker.md) |Program LED and Speaker |
-| 3 | [Ultrasonic Sensor](Ultrasonic_Sensor.md) | Program Ultrasonic Sensor |
-
-
-
+| 2 | [Button, LED and Buzzer](LED_Buzzer_Button_Worksheet.md) |Add and code a button, LED and buzzer |
 
 
 
