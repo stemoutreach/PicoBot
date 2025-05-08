@@ -14,11 +14,12 @@ Learn how to control an LED and a buzzer using a button with the Raspberry Pi Pi
 | Buzzer    | Positive to GPIO           | GP10     |
 | Button    | One leg to GPIO, one to GND | GP14     |
 
+
+<img src="https://github.com/stemoutreach/PicoBot/blob/main/zzimages/picoWire.jpg" width="600" > 
+
 <img src="https://github.com/stemoutreach/PicoBot/blob/main/zzimages/Button.jpg" width="600" > 
 
 <img src="https://github.com/stemoutreach/PicoBot/blob/main/zzimages/Buzzer.jpg" width="600" > 
-
-<img src="https://github.com/stemoutreach/PicoBot/blob/main/zzimages/picoWire.jpg" width="600" > 
 
 <img src="https://github.com/stemoutreach/PicoBot/blob/main/zzimages/LED.jpg" width="600" > 
 
