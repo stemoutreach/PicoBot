@@ -50,7 +50,6 @@ def move_backward():
     In2.high()
     In3.low()
     In4.high()
-    buzzer.high()  # Beep when reversing
 
 def turn_left():
     In1.low()
@@ -69,7 +68,6 @@ def stop_motors():
     In2.low()
     In3.low()
     In4.low()
-    buzzer.low()  # Stop beeping too
 
 # Alert functions
 def alert_on():
