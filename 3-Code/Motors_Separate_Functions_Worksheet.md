@@ -110,9 +110,23 @@ while True:
 1. Modify `main.py` to use other movement functions (like `turn_left()`).
 2. Add a second button for a different action (turn or forward).
 3. Try adding a function in `robot_utils.py` called `wiggle()` that turns left and right quickly!
+4. Try making the robot beep when moving backwards
+
+```python
+if button.value() == 0:
+    robot_utils.move_backward()
+    
+    # Beep 3 times while reversing
+    for i in range(3):
+        robot_utils.alert_on()
+        time.sleep(0.2)
+        robot_utils.alert_off()
+        time.sleep(0.2)
+
+    robot_utils.stop_motors()
+```
 
 ---
-
 ## ✅ Reflection Questions
 
 - Why is it helpful to separate functions into a different file?
